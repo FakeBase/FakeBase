@@ -18,7 +18,6 @@ public class News {
     private Date date;
     @NonNull
     private Type type;
-    private Account addedBy;
 
     public News() {
     }
@@ -35,7 +34,6 @@ public class News {
         this.text = text;
         this.date = date;
         this.type = type;
-        this.addedBy = addedBy;
     }
 
     public String getId() {
@@ -80,13 +78,5 @@ public class News {
 
     public void setType(@NonNull Type type) {
         this.type = type;
-    }
-
-    public Account getAddedBy() {
-        return addedBy;
-    }
-
-    public void setAddedBy(Account addedBy) {
-        this.addedBy = addedBy;
     }
 }

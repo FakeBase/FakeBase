@@ -18,7 +18,15 @@ public class AccountService {
                 .orElseThrow(() -> new AccountNotFoundException("Account not found."));
     }
 
+    public Optional<Account> getByUsernameOptional(String username){
+        return accountRepository.findByUsername(username);
+    }
+
     public Account create(Account account){
         return accountRepository.save(account);
+    }
+
+    public void delete(String id){
+        accountRepository.deleteById(id);
     }
 }
