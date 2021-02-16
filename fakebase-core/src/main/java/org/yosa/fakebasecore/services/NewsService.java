@@ -30,7 +30,19 @@ public class NewsService {
                 PageRequest.of(page, 50, Sort.by(Sort.Direction.DESC, "id")));
     }
 
+    @Cacheable(value = "searchedNews", key = "#idSearch")
+    public Page<News> search(String query, int page){
+        return newsRepository.search(query,
+                PageRequest.of(page, 50, Sort.by(Sort.Direction.DESC, "id")));
+    }
+
     public News create(News news){
         return newsRepository.save(news);
+    }
+
+    public void delete(String id){
+        if(newsRepository.findById(id).isEmpty())
+            throw new NewsNotFoundException("News not found.");
+        newsRepository.deleteById(id);
     }
 }
